@@ -35,3 +35,74 @@ Program:
 6)After finding the cosine score,we need to find the cosine similarity score between the terms and the usrer query.
 
 7)We will then rank the the result on the basis of highest cosine similarity score between terms and user query.
+
+
+Development Phase 2:Classification
+
+Classification is the process of classifying the user query.In other words, the user would enter the some part of the review of the wine and the system would then classify it in the variety or type of wine it is supposed to be in.Classification will be done on the training data which will train the system.
+
+1)Here for  classification we will be using Multinomial Naive Bayes algorithm.It assumes every training data is independent. It also assumes each class is independent from each other. 
+
+ Here is a step by step algorithm of multinomial naive bayes:
+ 
+ 2)Firstly ,we acquire the data i.e.load it.
+ 
+ 3)The training data-set contains details and variety of each wine.We will count the number of wines in the whole data-set.
+ 
+ 4)Then we will perform stemming and tokenisation on the data i.e.reviews of each wine just like we did in the search feature.
+ 
+ 5)Then we will tokenise each data and also put the unique words in the bag of words.
+ 
+ 6)Now we will consider user query. The user query also need to tokenized for classification.
+ 
+ 7)The algorithm is as follows:
+
+TRAINMULTINOMIALNB(C, D)
+ V ← EXTRACTVOCABULARY(D)
+
+ N ← COUNTDOCS(D)
+
+ for each c ∈ C
+
+ do Nc ← COUNTDOCSINCLASS(D, c)
+
+ prior[c] ← Nc/N
+
+ textc ← CONCATENATETEXTOFALLDOCSINCLASS(D, c)
+
+ for each t ∈ V
+
+ do Tct ← COUNTTOKENSOFTERM(textc, t)
+
+ for each t ∈ V
+
+
+ do condprob[t][c] ← Tct+1
+∑t
+′(Tct′+1)
+11 return V, prior, condprob
+
+
+APPLYMULTINOMIALNB(C, V, prior, condprob, d)
+ W ← EXTRACTTOKENSFROMDOC(V, d)
+
+ for each c ∈ C
+
+ do score[c] ← log prior[c]
+
+ for each t ∈ W
+
+ do score[c] += log condprob[t][c]
+
+ return arg maxc∈C
+
+score[c]
+
+The Naive Bayes algorithm gives us the probability of user query to be in each variety of wine.
+ 
+ 
+ 
+
+
+
+
