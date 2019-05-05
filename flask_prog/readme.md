@@ -36,6 +36,8 @@ Procedure:
 7)We will then rank the the result on the basis of highest cosine similarity score between terms and user query.
 
 OUTPUT:
+![Image description](https://github.com/Ashutosh2407/wine-recommender-system/blob/master/flask_prog/images/search1.PNG)
+![Image description](https://github.com/Ashutosh2407/wine-recommender-system/blob/master/flask_prog/images/search2.PNG)
 
 Development Phase 2:Classification
 
@@ -101,6 +103,8 @@ score[c]
 We will be using log function to reduce the complexity of the calculation of probability.The Naive Bayes algorithm gives us the score of the log of probability of user query to be in each variety of wine.
 
 OUTPUT:
+![Image description](https://github.com/Ashutosh2407/wine-recommender-system/blob/master/flask_prog/images/classify1.PNG)
+![Image description](https://github.com/Ashutosh2407/wine-recommender-system/blob/master/flask_prog/images/classify2.PNG)
 
 
 Development Phase 3:Recommender System
