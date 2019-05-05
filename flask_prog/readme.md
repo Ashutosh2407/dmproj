@@ -98,7 +98,7 @@ APPLYMULTINOMIALNB(C, V, prior, condprob, d)
 
 score[c]
 
-The Naive Bayes algorithm gives us the probability of user query to be in each variety of wine.
+We will be using log function to reduce the complexity of the calculation of probability.The Naive Bayes algorithm gives us the score of the log of probability of user query to be in each variety of wine.
  
  
  
