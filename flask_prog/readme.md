@@ -8,7 +8,7 @@ To find the top 3 wines, the website uses inverted term frequency for finding si
 Background:
 In the field of information retrival,tf-idf stands for term frequency inverse document frequency.Tf idf gives the measure of how important a word is in the document.Both tf and idf have to be calculate separately.
 
-Program:
+Procedure:
 
 1)Firstly, we need to load all the necessary libraries and read the dataset which is going to be used.
 
@@ -35,6 +35,7 @@ Program:
 
 7)We will then rank the the result on the basis of highest cosine similarity score between terms and user query.
 
+OUTPUT:
 
 Development Phase 2:Classification
 
@@ -99,6 +100,8 @@ score[c]
 
 We will be using log function to reduce the complexity of the calculation of probability.The Naive Bayes algorithm gives us the score of the log of probability of user query to be in each variety of wine.
 
+OUTPUT:
+
 
 Development Phase 3:Recommender System
 
@@ -111,6 +114,20 @@ Cosine Similarity:
 After finding TF-IDF for each document and user query, we need to calculate cosine similarity.Cosine similarity is a measure of similarity between two non-zero vectors of an inner product space that measures the cosine of the angle between them.
 Content-based filtering, also referred to as cognitive filtering, recommends items based on a comparison between the content of the items and a user profile. The content of each item is represented as a set of descriptors or terms, typically the words that occur in a document.
  
+Procedure:
+The recommender system is very similar to the search feature.
+
+1)After loading data, Wine recommender removes stop words and tokenize each word.
+
+2)Wine recommender calculates TF_IDF score for each token.
+
+3)After setting TF_IDF for training data, Wine Recommender takes user query and perform stemming and lemmatization on the user query. Wine Recommender also tokenizes user query and calculates TF_IDF for each token.
+
+4)After finding all TF_IDF of training data and user query, Wine Recommender calculates cosine similarities between document and user query. Wine Recommender will show the top 3 similar wines based on the user query.
+
+Output
+
+
  
 
 
