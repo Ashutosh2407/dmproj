@@ -6,8 +6,7 @@ The Wine Recommender System shows top 3 wine list based on user reviews.The Wine
 To find the top 3 wines, the website uses inverted term frequency for finding similarities between the user query and the wine review.
 
 Background:
-In the field of information retrival,tf-idf stands for term frequency inverse document frequency.Tf idf gives the measure of how important
-a word is in the document.Both tf and idf have to be calculate separately.
+In the field of information retrival,tf-idf stands for term frequency inverse document frequency.Tf idf gives the measure of how important a word is in the document.Both tf and idf have to be calculate separately.
 
 Program:
 
@@ -99,7 +98,18 @@ APPLYMULTINOMIALNB(C, V, prior, condprob, d)
 score[c]
 
 We will be using log function to reduce the complexity of the calculation of probability.The Naive Bayes algorithm gives us the score of the log of probability of user query to be in each variety of wine.
- 
+
+
+Development Phase 3:Recommender System
+
+Recommender feature shows top 3 similar wines based on previously selected wines.Wine recommender system uses content-based recommender system. Content-based recommender system gives highest priority to the customer or user preference.To implement this feature, user will first search wines by typing their desire wine description. It will show three wines based on user description. User can get three more similar wines by selecting one wine from the result.To pull off this task, we will be using cosine similarities.
+
+Introduction:
+In the field of information retrival,tf-idf stands for term frequency inverse document frequency.Tf idf gives the measure of how important a word is in the document.Both tf and idf have to be calculate separately.
+
+Cosine Similarity:
+After finding TF-IDF for each document and user query, we need to calculate cosine similarity.Cosine similarity is a measure of similarity between two non-zero vectors of an inner product space that measures the cosine of the angle between them.
+Content-based filtering, also referred to as cognitive filtering, recommends items based on a comparison between the content of the items and a user profile. The content of each item is represented as a set of descriptors or terms, typically the words that occur in a document.
  
  
 
