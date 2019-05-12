@@ -39,10 +39,10 @@ doc['textual'] = doc['textual'].apply(process_text)
 
 
 english_stemmer = SnowballStemmer('english')
-analyzer = CountVectorizer().build_analyzer()
+analise = CountVectorizer().build_analyzer()
 
 def stemming(text):
-    return (english_stemmer.stem(w) for w in analyzer(text))
+    return (english_stemmer.stem(w) for w in analise(text))
 
 count = CountVectorizer(analyzer = stemming)
 
@@ -51,21 +51,21 @@ count_matrix = count.fit_transform(doc['textual'])
 
 
 
-tfidf_transformer = TfidfTransformer()
-train_tfidf = tfidf_transformer.fit_transform(count_matrix)
+tfidf_transform = TfidfTransformer()
+train_tfidf = tfidf_transform.fit_transform(count_matrix)
 #print(train_tfid)
 
 
 
-def get_search_results(query):
+def get_search(query):
     query = process_text(query)
     query_matrix = count.transform([query])
-    query_tfidf = tfidf_transformer.transform(query_matrix)
+    query_tfidf = tfidf_transform.transform(query_matrix)
     sim_score = cosine_similarity(query_tfidf, train_tfidf)
     sorted_indexes = np.argsort(sim_score).tolist()
     return doc.iloc[sorted_indexes[0][-3:]]
    
-"""wines = get_search_results("ripe aroma")
+"""wines = get_search("ripe aroma")
 print(wines)
 """
 joblib.dump(count, 'count.pkl')
