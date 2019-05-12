@@ -30,7 +30,7 @@ doc['textual'] = doc.apply(give_data, axis = 1)
 def process_text(text):
     text = text.replace("uncredited","")
     text = re.sub('[^a-z\s]', '', text.lower())
-    text = [w for w in text.split(' ') if w not in set(stopwords)]
+    text = [word for word in text.split(' ') if word not in set(stopwords)]
     return ' '.join(text)
 
 doc['textual'] = doc['textual'].apply(process_text)
@@ -42,7 +42,7 @@ english_stemmer = SnowballStemmer('english')
 analise = CountVectorizer().build_analyzer()
 
 def stemming(text):
-    return (english_stemmer.stem(w) for w in analise(text))
+    return (english_stemmer.stem(word) for word in analise(text))
 
 count = CountVectorizer(analyzer = stemming)
 
