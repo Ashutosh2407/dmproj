@@ -110,6 +110,19 @@ def getVar():
 	df = predict(query)
 	return render_template("resultclassify.html",query = query,df = df)
 
+@app.route("/recommend",methods=["GET","POST"])
+def recommend():
+	query=df["title"].tolist()
+	
+	try:
+		wine_id = request.args.get('wine_id')
+		wine_id = int(wine_id)
+	except Exception as e:
+		return render_template("recommend.html",nums = len(query), wine_list= query)
+	wines = get_search_results(df['description'].iloc[wine_id])
+	return render_template('recommendresult.html', wines = wines)
+
+
 
 if __name__=="__main__":
 	app.run(host='127.0.0.1', port=5000, debug=True)
