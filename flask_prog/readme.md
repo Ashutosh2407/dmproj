@@ -129,6 +129,10 @@ The recommender system is very similar to the search feature.
 
 4)After finding all TF_IDF of training data and user query, Wine Recommender calculates cosine similarities between document and user query. Wine Recommender will show the top 3 similar wines based on the user query.
 
+OUTPUT:
+![Image description](https://github.com/Ashutosh2407/wine-recommender-system/blob/master/flask_prog/images/recom1.png)
+![Image description](https://github.com/Ashutosh2407/wine-recommender-system/blob/master/flask_prog/images/recom2.PNG)
+
 Dataset:
 https://www.kaggle.com/zynicide/wine-reviews/version/4
 
