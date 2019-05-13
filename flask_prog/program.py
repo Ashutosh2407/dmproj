@@ -27,13 +27,13 @@ doc['textual'] = doc.apply(give_data, axis = 1)
 #print(give_data(doc))
 
 
-def process_text(text):
+def text_proc(text):
     text = text.replace("uncredited","")
     text = re.sub('[^a-z\s]', '', text.lower())
     text = [word for word in text.split(' ') if word not in set(stopwords)]
     return ' '.join(text)
 
-doc['textual'] = doc['textual'].apply(process_text)
+doc['textual'] = doc['textual'].apply(text_proc)
 #print(doc['textual'][0])
 
 
