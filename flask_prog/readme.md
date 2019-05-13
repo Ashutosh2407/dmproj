@@ -133,6 +133,14 @@ OUTPUT:
 ![Image description](https://github.com/Ashutosh2407/wine-recommender-system/blob/master/flask_prog/images/recom1.png)
 ![Image description](https://github.com/Ashutosh2407/wine-recommender-system/blob/master/flask_prog/images/recom2.PNG)
 
+Deploying code in Google Cloud Platform:
+1)First create a google account and then you can login into google cloud account.For first use you will get $300
+ credits
+2)Then create a project and name it qaccordingly.
+3)Go to the console and then upload all the project files.
+4Create an app.yaml file which has all important version information.
+5)Go to the console and direct to the directory where your project is.
+6)Type the command:gcloud app deploy and then it will start to deploy.
 Dataset:
 https://www.kaggle.com/zynicide/wine-reviews/version/4
 
