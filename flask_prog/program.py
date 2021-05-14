@@ -1,7 +1,7 @@
-#PROGRAM 
+#PROGRAM
 import pandas as pd
 import numpy as np
-from sklearn.externals import joblib
+import joblib
 import re
 import nltk
 from nltk.tokenize import RegexpTokenizer
@@ -58,16 +58,16 @@ train_tfidf = tfidf_transform.fit_transform(count_matrix)
 
 
 def get_search(query):
-    query = process_text(query)
+    query = text_proc(query)
     query_matrix = count.transform([query])
     query_tfidf = tfidf_transform.transform(query_matrix)
     sim_score = cosine_similarity(query_tfidf, train_tfidf)
     sorted_indexes = np.argsort(sim_score).tolist()
     return doc.iloc[sorted_indexes[0][-3:]]
-   
+
 """wines = get_search("ripe aroma")
 print(wines)
 """
 joblib.dump(count, 'count.pkl')
-joblib.dump(tfidf_transformer, 'tfidf.pkl')
+joblib.dump(tfidf_transform, 'tfidf.pkl')
 joblib.dump(train_tfidf, 'trained_tfidf.pkl')

@@ -34,7 +34,7 @@ class naive_bayes:
         return score
 
     def count_unique_term(self, x_train):
-        start = time.clock()
+        start = time.time()
         words = []
         for x in x_train:
             words.extend(x)
@@ -42,20 +42,20 @@ class naive_bayes:
         return vocab_len
 
     def count_total_sample_class(self, x_train, y_train, class_index):
-        start = time.clock()
+        start = time.time()
         total = np.sum(y_train[:,class_index]==1)
         return total
-    
+
     def count_total_word_class(self, x_train, y_train, class_index):
-        start = time.clock()
+        start = time.time()
         x_class = x_train[y_train[:,class_index]==1]
         total_words = 0
         for x in x_class:
             total_words += len(x)
-        return total_words        
-    
+        return total_words
+
     def count_word_occurance_class(self, x_train, y_train, class_index):
-        start = time.clock()
+        start = time.time()
         x_class = x_train[y_train[:,class_index]==1]
         counter = collections.Counter(x for xs in x_class for x in set(xs))
         return counter

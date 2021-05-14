@@ -1,10 +1,10 @@
 from flask import Flask,render_template,request
 import pandas as pd
 import numpy as np
-from sklearn.externals import joblib
+import joblib
 import re
 from nltk.tokenize import RegexpTokenizer
-from program import get_search_results
+from program import get_search
 from nltk.corpus import stopwords
 from ast import literal_eval
 from nltk.stem import WordNetLemmatizer
@@ -19,7 +19,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 # def script_output():
 # 	output = execute("./program.py")
 # 	return render_template("results.html",output=output)
-df=pd.read_csv(r"C:\Users\Ashutosh Wagh\Desktop\winemagazine.csv",encoding="latin1")
+df=pd.read_csv(r"C:\Users\Ashutosh Wagh\Desktop\wine-recommender-system\flask_prog\winemagazine.csv",encoding="latin1")
 classes=["Pinot Noir","Chardonnay","Cabernet Sauvignon","Red Blend","Bordeaux-style Red Blend"]
 
 
@@ -58,7 +58,7 @@ def stemming(text):
 
 
 def process_test_classification(text):
-    # print(type(text))   
+    # print(type(text))
     text = re.sub('[^a-z\s]', '', text.lower())
     text = [lemmatizer.lemmatize(w) for w in text.split() if w not in set(stop_words)]
     return ' '.join(text)
@@ -73,9 +73,9 @@ def predict(text):
 	pred = abc.predict(text.split(' '))
 	df = pd.DataFrame(data=pred,index=[0])
 	return df
-    
 
-abc=naive_bayes()  
+
+abc=naive_bayes()
 abc.initialize(x_train,y_train, list(classes))
 
 
@@ -95,7 +95,7 @@ def index():
 def getValue():
 	query = request.form["query"]
 	print (query)
-	wines = get_search_results(query)
+	wines = get_search(query)
 
 	return render_template("results.html",query = query,wines = wines)
 
@@ -103,23 +103,24 @@ def getValue():
 @app.route("/classify")
 def classify():
 	return render_template("classify.html")
-	
+    #return render_template("recommendresult.html")
+
 @app.route("/classify",methods=["GET","POST"])
 def getVar():
 	query = request.form["query"]
 	df = predict(query)
-	return render_template("resultclassify.html",query = query,df = df)
+	return render_template("results.html",query = query,wines = df)
 
 @app.route("/recommend",methods=["GET","POST"])
 def recommend():
-	query=df["title"].tolist()
-	
+	query=df["title"].tolist()[:10]
+
 	try:
 		wine_id = request.args.get('wine_id')
 		wine_id = int(wine_id)
 	except Exception as e:
 		return render_template("recommend.html",nums = len(query), wine_list= query)
-	wines = get_search_results(df['description'].iloc[wine_id])
+	wines = get_search(df['description'].iloc[wine_id])
 	return render_template('recommendresult.html', wines = wines)
 
 
