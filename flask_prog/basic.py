@@ -19,7 +19,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 # def script_output():
 # 	output = execute("./program.py")
 # 	return render_template("results.html",output=output)
-df=pd.read_csv(r"C:\Users\Ashutosh Wagh\Desktop\wine-recommender-system\flask_prog\winemagazine.csv",encoding="latin1")
+df=pd.read_csv(r"C:\Users\Ashutosh Wagh\Desktop\wine-recommender-system\flask_prog\short.csv",encoding="latin1")
 classes=["Pinot Noir","Chardonnay","Cabernet Sauvignon","Red Blend","Bordeaux-style Red Blend"]
 
 
